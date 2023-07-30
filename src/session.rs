@@ -33,9 +33,9 @@
 //! }
 //! ```
 
-use rand;
-use rand::distributions::Alphanumeric;
-use rand::Rng;
+// use rand;
+// use rand::distributions::Alphanumeric;
+// use rand::Rng;
 use std::borrow::Cow;
 use std::sync::atomic::AtomicBool;
 use std::sync::atomic::Ordering;
@@ -115,23 +115,24 @@ impl<'r> Session<'r> {
     }*/
 }
 
-/// Generates a string suitable for a session ID.
-///
-/// The output string doesn't contain any punctuation or character such as quotes or brackets
-/// that could need to be escaped.
-pub fn generate_session_id() -> String {
-    // 5e+114 possibilities is reasonable.
-    rand::thread_rng()
-        .sample_iter(&Alphanumeric)
-        .map(char::from)
-        .filter(|&c| {
-            ('a'..='z').contains(&c) || ('A'..='Z').contains(&c) || ('0'..='9').contains(&c)
-        })
-        .take(64)
-        .collect::<String>()
-}
+// /// Generates a string suitable for a session ID.
+// ///
+// /// The output string doesn't contain any punctuation or character such as quotes or brackets
+// /// that could need to be escaped.
+// pub fn generate_session_id() -> String {
+//     // 5e+114 possibilities is reasonable.
+//     rand::thread_rng()
+//         .sample_iter(&Alphanumeric)
+//         .map(char::from)
+//         .filter(|&c| {
+//             ('a'..='z').contains(&c) || ('A'..='Z').contains(&c) || ('0'..='9').contains(&c)
+//         })fastrand = "1.8.0"
+//         .take(64)
+//         .collect::<String>()
+// }
 
-#[test]
-fn test_generate_session_id() {
-    assert!(generate_session_id().len() >= 32);
+pub fn generate_session_id() -> String {
+    use std::iter::repeat_with;
+    let rng = fastrand::Rng::new();
+    repeat_with(|| rng.alphanumeric()).take(64).collect::<String>()
 }

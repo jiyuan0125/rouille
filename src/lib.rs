@@ -62,9 +62,9 @@ extern crate brotli;
 extern crate chrono;
 #[cfg(feature = "gzip")]
 extern crate deflate;
-extern crate filetime;
+// extern crate filetime;
 extern crate multipart;
-extern crate rand;
+// extern crate rand;
 extern crate serde;
 #[macro_use]
 extern crate serde_derive;
@@ -89,8 +89,8 @@ pub const DEFAULT_ENCODE_SET: &percent_encoding::AsciiSet = &percent_encoding::C
     .add(b'{')
     .add(b'}');
 
-pub use assets::extension_to_mime;
-pub use assets::match_assets;
+// pub use assets::extension_to_mime;
+// pub use assets::match_assets;
 pub use log::{log, log_custom};
 pub use response::{Response, ResponseBody};
 pub use tiny_http::ReadWrite;
@@ -120,7 +120,7 @@ pub mod proxy;
 pub mod session;
 pub mod websocket;
 
-mod assets;
+// mod assets;
 mod find_route;
 mod log;
 mod response;

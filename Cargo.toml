@@ -20,11 +20,12 @@ rustls = ["tiny_http/ssl-rustls"]
 base64 = "0.13"
 brotli = { version = "3.3.2", optional = true }
 chrono = { version = "0.4.19", default-features = false, features = ["clock"] }
-filetime = "0.2.0"
+# filetime = "0.2.0"
 deflate = { version = "1.0.0", optional = true, features = ["gzip"] }
-multipart = { version = "0.18", default-features = false, features = ["server"] }
+# multipart = { version = "0.18", default-features = false, features = ["server"] }
 percent-encoding = "2"
-rand = "0.8"
+# rand = "0.8"
+fastrand = "1.8.0"
 serde = "1"
 serde_derive = "1"
 serde_json = "1"
@@ -34,6 +35,13 @@ tiny_http = { version = "0.12.0", default-features = false }
 url = "2"
 threadpool = "1"
 num_cpus = "1"
+
+[dependencies.multipart]
+git = "https://github.com/jiyuan0125/multipart"
+branch = "arceos"
+version = "0.18"
+default-features = false
+features = ["server"]
 
 [dev-dependencies]
 postgres = { version = "0.19", default-features = false }
