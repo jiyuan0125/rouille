@@ -30,8 +30,8 @@ serde = "1"
 serde_derive = "1"
 serde_json = "1"
 sha1 = "0.10.1"
-time = { version = "0.3.15", features = [ "local-offset" ] }
-tiny_http = { version = "0.12.0", default-features = false }
+time = { version = "0.3.15", features = ["local-offset"] }
+tiny_http = { git = "https://github.com/jiyuan0125/tiny-http", branch = "arceos" }
 url = "2"
 threadpool = "1"
 num_cpus = "1"
